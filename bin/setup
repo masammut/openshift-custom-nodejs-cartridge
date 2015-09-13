@@ -10,7 +10,8 @@ esac
 # Create additional directories required by the diy cartridge
 mkdir -p ${OPENSHIFT_DIY_DIR}run
 
-${OPENSHIFT_DIY_DIR}bin/control build
+gear build
+gear start
 
 client_result "This is based on the DIY Cartridge and installs as diy (ie ~/diy)."
 

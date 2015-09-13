@@ -10,5 +10,5 @@ esac
 # Create additional directories required by the diy cartridge
 mkdir -p ${OPENSHIFT_DIY_DIR}run
 
-client_result "Disclaimer: This is an experimental cartridge that provides a way to try unsupported languages, frameworks, and middleware on OpenShift."
+client_result "This is based on the DIY Cartridge and installs as diy (ie ~/diy)."
 

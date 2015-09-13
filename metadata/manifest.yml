@@ -1,13 +1,13 @@
 ---
 Name: diy
 Cartridge-Short-Name: DIY
-Display-Name: Custom Node.js 0.1 (masammut)
+Display-Name: Custom Node.js
 Description: Based on Do-It-Yourself (DIY) 0.1
 Version: '0.1'
 License: ASL 2.0
 License-Url: http://www.apache.org/licenses/LICENSE-2.0.txt
 Cartridge-Version: 0.0.13
-Source-Url: https://github.com/masammut/openshift-diy-cartridge.git
+Source-Url: https://github.com/masammut/openshift-custom-nodejs-cartridge.git
 Compatible-Versions:
 - 0.0.10
 - 0.0.11

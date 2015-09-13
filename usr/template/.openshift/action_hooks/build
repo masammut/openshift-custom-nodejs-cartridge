@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#  Source utility functions.
+source "$OPENSHIFT_REPO_DIR/.openshift/lib/utils"
+
+install_custom_node_if_required
+
+# Run npm install in the folder specified by $1 (relative to ~/app-root/repo/)
+# Can install multiple instances
+npm_install .
+# npm_install another_folder

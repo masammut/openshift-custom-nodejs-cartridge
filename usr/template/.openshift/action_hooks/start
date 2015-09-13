@@ -1,0 +1,22 @@
+#!/bin/bash
+# The logic to start up your application should be put in this
+# script. The application will work only if it binds to
+# $OPENSHIFT_DIY_IP:8080
+
+#  Source utility functions.
+source "$OPENSHIFT_REPO_DIR/.openshift/lib/utils"
+
+echo "Node Version: $(node -v)"
+echo "Custom Bin: $custom_bin"
+
+# Call custom node using supervisor and logshifter
+#
+# supernode $1 $2
+#
+# $1 - .js file to execute realitive to ~/app-root/repo
+# $2 - Log tag. Logs will be in ~/app-root/logs/<tag>.log
+#
+# Can start multiple instances
+
+supernode server.js nodejs
+#supernode another_server.js another_nodejs

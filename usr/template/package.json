@@ -1,0 +1,38 @@
+{
+  "name": "openshift-custom-nodejs-repo",
+  "version": "1.1.0",
+  "description": "Custom Node.js Repo Cartridge for OpenShift",
+  "keywords": [
+    "OpenShift",
+    "Node.js",
+    "application",
+    "openshift"
+  ],
+  "author": {
+    "name": "Mark Anthony Sammut",
+    "email": "masammut@users.noreply.github.com",
+    "url":  "http://www.masammut.com"
+  },
+  "homepage": "http://www.masammut.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/masammut/openshift-custom-nodejs-cartridge.git"
+  },
+
+  "engines": {
+    "node": ">= 0.12.7",
+    "npm": ">= 1.2.0"
+  },
+
+  "dependencies": {
+    "restify": "^2.8.3"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js"
+}

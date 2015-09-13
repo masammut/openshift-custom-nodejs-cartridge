@@ -1,0 +1,68 @@
+#!/bin/bash
+#
+#  Utility functions.
+#
+
+custom_bin="~/app-root/data/sys/bin"
+
+export PATH="~/app-root/data/sys/bin:${PATH}"
+
+# Call custom node using supervisor and logshifter
+#
+# supernode $1 $2
+#
+# $1 - .js file to execute realitive to ~/app-root/repo
+# $2 - Log tag. Logs will be in ~/app-root/logs/<tag>.log
+#
+# eg: supernode server.js nodejs
+#
+# Will also do log rotate
+#
+function supernode() {
+	nohup supervisor -x ~/app-root/data/sys/bin/node ~/app-root/repo/$1 |& /usr/bin/logshifter -tag $2 &
+}
+
+
+# Run npm install in the folder specified by $1 (relative to ~/app-root/repo/)
+# 
+# eg npm_install .
+function npm_install() {
+	cd ~/app-root/repo/$1
+	~/app-root/data/sys/bin/npm install --loglevel warn --production
+}
+
+function install_custom_node_if_required() {
+	if [ -f ~/app-root/data/sys/bin/node ]; then
+		echo "Custom Node exists"
+	else 
+		install_custom_node
+	fi 
+}
+
+function install_custom_node() {
+
+	node_url="https://nodejs.org/download/release/v0.12.7/"
+	node_file="node-v0.12.7-linux-x64.tar.gz"
+	
+	echo "Installing Custom Node.js: $node_file"
+	
+	cd ~/app-root/data/
+	mkdir sys
+	mkdir tmp_custom_nodejs
+	mkdir .npm
+	cd tmp_custom_nodejs
+	wget -nv "$node_url$node_file"
+	tar -C ../sys --strip-components 1 -xzf $node_file
+	rm $node_file
+
+	~/app-root/data/sys/bin/npm -g config set cache ~/app-root/data/.npm	
+	~/app-root/data/sys/bin/npm install supervisor -g
+	# The bin will be in ~/app-root/data/sys/bin
+	
+	rm -r ~/app-root/data/tmp_custom_nodejs
+}
+
+function uninstall_custom_node() {
+	rm -r ~/app-root/data/sys
+	rm -r ~/app-root/data/.npm
+}

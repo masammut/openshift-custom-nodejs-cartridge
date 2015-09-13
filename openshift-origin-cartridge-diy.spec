@@ -1,20 +1,21 @@
 %global cartridgedir %{_libexecdir}/openshift/cartridges/diy
 
-Summary:       DIY cartridge
-Name:          openshift-origin-cartridge-diy
+Summary:       Custom Node.js Cartridge
+Name:          openshift-custom-nodejs-cartridge
 Version: 1.24.1
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
 URL:           https://www.openshift.com
 Source0:       http://mirror.openshift.com/pub/openshift-origin/source/%{name}/%{name}-%{version}.tar.gz
+Requires:      rubygem(openshift-origin-node)
 Requires:      openshift-origin-node-util
 Provides:      openshift-origin-cartridge-diy-0.1 = 2.0.0
 Obsoletes:     openshift-origin-cartridge-diy-0.1 <= 1.99.9
 BuildArch:     noarch
 
 %description
-DIY cartridge for openshift. (Cartridge Format V2)
+Custom Node.js cartridge. (Cartridge Format V2)
 
 %prep
 %setup -q
